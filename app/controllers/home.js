@@ -34,6 +34,8 @@ router.post('/', function (req, res, next) {
     		d.resolve();
   		});
         return d.promise;
+    })
+    .then(function(){
+    	res.send(200);
     });
-  	res.send(200);
 });
