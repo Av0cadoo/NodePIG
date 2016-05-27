@@ -17,6 +17,7 @@ router.post('/', function (req, res, next) {
     defered.promise.then(function() {
         var d = q.defer();
     	exec('echo' + data + ' > input.txt', function(error, stdout, stderr){
+        puts(error, stdoout, sterr);
     		d.resolve();
   		});
         return d.promise;
@@ -24,6 +25,7 @@ router.post('/', function (req, res, next) {
     .then(function(){
     	var d = q.defer();
     	exec('hadoop fs -put -f input.txt', function(error, stdout, stderr){
+        puts(error, stdoout, sterr);
     		d.resolve();
   		});
         return d.promise;
@@ -31,6 +33,7 @@ router.post('/', function (req, res, next) {
     .then(function(){
     	var d = q.defer();
     	exec('pig -x mapreduce search.pig', function(error, stdout, stderr){
+        puts(error, stdoout, sterr);
     		d.resolve();
   		});
         return d.promise;
